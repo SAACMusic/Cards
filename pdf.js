@@ -2,18 +2,17 @@ function strip(){
   var students=prompt("Paste the list");
   var band=prompt("Paste the band");
   var studentarray=students.split(" ");
-  console.log(studentarray);
   for (var i = 0; i < studentarray.length; i++) {
     if (/\d/.test(studentarray[i]) === true) {
       studentarray[i]= null;
     }
   }
+  studentarray = studentarray.filter(Boolean);
+  for (var i = 0; i < studentarray.length; i++) {
+    studentarray[i]=studentarray[i+1].concat(" ", studentarray[i]);
+    delete studentarray[i+1];
+    studentarray = studentarray.filter(Boolean);
+  }
   console.log(studentarray);
-  var filtered = studentarray.filter(
-    function (el) {
-      return el != null;
-    }
-  );
-  console.log(filtered);
-  document.getElementById("New").value=filtered;
+  document.getElementById("New").innerHTML=studentarray;
 }
