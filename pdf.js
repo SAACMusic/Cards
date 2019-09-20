@@ -12,5 +12,5 @@ function strip(){
       return el != null;
     }
   );
-  console.log(filtered);
+  document.getElementById("New").value=filtered;
 }
