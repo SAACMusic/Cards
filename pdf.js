@@ -9,7 +9,11 @@ function strip(){
   }
   studentarray = studentarray.filter(Boolean);
   for (var i = 0; i < studentarray.length; i++) {
-    studentarray[i]=studentarray[i+1].concat(" ", studentarray[i]);
+    var firstname = studentarray[i+1].charAt(0).toUpperCase() + studentarray[i+1].slice(1).toLowerCase();
+    var lastname = studentarray[i].charAt(0).toUpperCase() + studentarray[i].slice(1).toLowerCase();
+    studentarray[i]=[firstname, lastname];
+    var email = studentarray[i][0].charAt(0).toLowerCase().concat(studentarray[i][1].toLowerCase(), "@saac.qld.edu.au");
+    studentarray[i].push(email);
     delete studentarray[i+1];
     studentarray = studentarray.filter(Boolean);
   }
